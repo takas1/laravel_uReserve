@@ -133,4 +133,9 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
+    'attributes' => [
+        'name' => '名前',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+    ]
 ];
