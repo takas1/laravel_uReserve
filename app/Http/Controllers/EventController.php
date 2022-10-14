@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use App\Models\Event;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
@@ -15,7 +17,16 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        // $today = Carbon::today();
+
+        $events = DB::table('events')
+        ->orderBy('start_date', 'asc')
+        ->paginate(10);
+
+        return view(
+            'manager.events.index',
+            compact('events')
+        );
     }
 
     /**
@@ -25,7 +36,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('manager.events.create');
     }
 
     /**
